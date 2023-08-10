@@ -4,5 +4,5 @@ interface Person {
 }
 
 type Keys = keyof Person;
-console.log('IsSubButton', Keys)
+  console.log('IsSubButton', Keys)
 
