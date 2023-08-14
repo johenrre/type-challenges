@@ -28,11 +28,14 @@ interface Expected2 {
 // type MyPick<T, K> = {
 //   [P in (keyof T) & K]: T[P]
 // }
+type MyPick<obj, pickKey extends string> = {
+  [key in keyof obj as (pickKey extends key ? key : never)] : obj[key]
+}
 
 
 // ============= Your Code Here =============
-type MyPick<T, K> = {
-  [P in (keyof T) as (K extends P ? P : never)]: T[P]
-}
+// type MyPick<T, K> = {
+//   [P in (keyof T) as (K extends P ? P : never)]: T[P]
+// }
 
 // 这段代码中的 (keyof T) as (K extends P ? P : never) 是一个条件表达式，它在映射类型中进行类型过滤。条件表达式的作用是根据条件 (K extends P) 来决定属性名是否保留。

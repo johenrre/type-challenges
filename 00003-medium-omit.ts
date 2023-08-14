@@ -24,6 +24,10 @@ interface Expected2 {
   title: string
 }
 
+type MyOmit<obj, subkey extends keyof obj> = {
+  [key in keyof obj as (key extends subkey ? never : key)]: obj[key]
+}
+
 
 // ============= Your Code Here =============
-type MyOmit<T, K extends keyof T> = { [P in Exclude<keyof T, K>]: T[P] }
+// type MyOmit<T, K extends keyof T> = { [P in Exclude<keyof T, K>]: T[P] }

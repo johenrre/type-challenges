@@ -29,6 +29,8 @@ interface Expected {
   completed: boolean
 }
 
+type MyReadonly2<obj, keys extends keyof obj = keyof obj> = Readonly<Pick<obj, keys>> & Omit<obj, keys>
+
 
 // ============= Your Code Here =============
-type MyReadonly2<T, K extends keyof T = keyof T> = Readonly<Pick<T, K>> & Omit<T, K>
+// type MyReadonly2<T, K extends keyof T = keyof T> = Readonly<Pick<T, K>> & Omit<T, K>

@@ -56,8 +56,17 @@ type Expected1 = {
 
 type Expected2 = { readonly a: string } | { readonly b: number }
 
+// type IsFunction<obj> = 
+
+type DeepReadonly<obj> = {
+  readonly [key in keyof obj]: obj[key] extends object 
+    ? obj[key] extends Function
+      ? obj[key]
+      : DeepReadonly<obj[key]>
+    : obj[key]
+}
 
 // ============= Your Code Here =============
-type DeepReadonly<T> = {
-  readonly [key in keyof T] : T[key] extends object ? T[key] extends Function ? T[key] : DeepReadonly<T[key]> : T[key]
-}
+// type DeepReadonly<T> = {
+//   readonly [key in keyof T] : T[key] extends object ? T[key] extends Function ? T[key] : DeepReadonly<T[key]> : T[key]
+// }

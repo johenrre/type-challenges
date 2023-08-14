@@ -20,6 +20,10 @@ type ComplexObject = {
 const fn = (v: boolean) => v ? 1 : 2
 const fn1 = (v: boolean, w: any) => v ? 1 : 2
 
+type MyReturnType<T extends Function> = T extends (...arg: any) => infer K ? K : never
+
+
+
 
 // ============= Your Code Here =============
-type MyReturnType<T> = T extends (...arg: any) => infer K ? K : never;
+// type MyReturnType<T> = T extends (...arg: any) => infer K ? K : never;
